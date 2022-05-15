@@ -18,7 +18,7 @@ const routes = require("./routes");
 
 //Config
 const dotenv = require("dotenv");
-dotenv.config({path:"./config/config.env"});
+dotenv.config({path:"./config.env"});
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
