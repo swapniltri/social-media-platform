@@ -32,16 +32,15 @@ mongoose.connect(DB,{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
 
 
 //Establishing the session connection with mongoDB, after connecting the application to mongoDB
-const sessionStore = new MongoStore({
-    url: DB,
-    collection: "session"
-});
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: "It's a secret",
     resave: false,
     saveUninitialized: false,
-    store: sessionStore,
+    store: new MongoStore({
+        uri: DB,
+        collection: "session"
+    }),
     cookie:{
         maxAge: 1000 * 60 * 60 * 24 //1 day in milisec.
     }
