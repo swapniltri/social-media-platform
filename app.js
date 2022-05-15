@@ -26,19 +26,19 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 const DB = process.env.DB_URL;
 
-mongoose.connect("mongodb+srv://admin-swapnil:test123@cluster0.gphtb.mongodb.net/peopleDB?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
+mongoose.connect(DB,{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
     console.log("Success");
 }).catch((err) => console.log("Failed"));
 
 
 //Establishing the session connection with mongoDB, after connecting the application to mongoDB
 const sessionStore = new MongoStore({
-    uri: DB,
+    url: DB,
     collection: "session"
 });
 
 app.use(session({
-    secret: "It's a secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
