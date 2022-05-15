@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 const DB = process.env.DB_URL;
 
-mongoose.connect(DB,{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
+mongoose.connect("mongodb+srv://admin-swapnil:test123@cluster0.gphtb.mongodb.net/peopleDB?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
     console.log("Success");
 }).catch((err) => console.log("Failed"));
 
