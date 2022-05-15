@@ -34,7 +34,7 @@ mongoose.connect(DB,{useNewUrlParser:true,useUnifiedTopology:true}).then(() => {
 //Establishing the session connection with mongoDB, after connecting the application to mongoDB
 
 app.use(session({
-    secret: "It's a secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
