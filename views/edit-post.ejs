@@ -1,0 +1,58 @@
+<%- include("partials/header") -%>
+
+<body>
+    <header class="header-bar mb-3 bg-dark">
+        <div class="container d-flex flex-column flex-md-row align-items-center p-3">
+            <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">OurApp</a></h4>
+
+            <div class="flex-row my-3 my-md-0">
+                <span class="text-white mr-2 header-chat-icon" id="chat-icon" title="Chat" data-toggle="tooltip"
+                    data-placement="bottom"><i class="fas fa-comment"></i></span>
+                    <form action="/search" method="POST" class="d-inline">
+                        <input name="username" class=" input-dark bg-dark text-white" type="text" title="Enter Username" data-toggle="tooltip"
+                        data-placement="bottom" placeholder="Search" autocomplete="off" required>
+                        <button class="btn btn-sm btn-secondary mr-2" title="Serach Profile" data-toggle="tooltip"
+                        data-placement="bottom"><i class="fas fa-search"></i></button>
+                    </form>
+                
+                <a class="btn btn-sm btn-success mr-2" href="/create-post">Create Post</a>
+                <form action="/logout" method="POST" class="d-inline">
+                    <input type="hidden" name="_csrf" value="vyFiGYiz-ngtvfbmQHkv61Y6lgPvKPZa5yy0">
+                    <button class="btn btn-sm btn-secondary">Sign Out</button>
+                </form>
+                <a href="/profile/<%=User%>" class="ml-2"><img title="My Profile" data-toggle="tooltip"
+                    data-placement="bottom" style="width: 32px; height: 32px; border-radius: 16px;"
+                    src="https://gravatar.com/avatar/12416fb9b12fc4962ba8f41fc5cb8cea?s=128"></a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="container py-md-5 col-lg-7 col-lg-offset-7 container--narrow">
+
+
+
+
+
+        <a class="small font-weight-bold" href="/post/<%=postID%>">&laquo; Back to post permalink</a>
+
+        <form class="mt-3" action="/post/<%=postID%>/edit" method="POST">
+            <div class="form-group">
+                <label for="post-title" class="text-muted mb-2">Title</label>
+                <input required name="title" value="<%=title%>" id="post-title"
+                    class="form-control form-control-lg form-control-title" type="text" placeholder=""
+                    autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="post-body" class="text-muted mb-2">Body Content</label>
+                <textarea rows="11" required name="body" id="post-body" class="body-content tall-textarea form-control"
+                    type="text"><%=content%></textarea>
+            </div>
+
+            <input type="hidden" name="_csrf" value="w4Y4Iisr-MSP_G3gsrc9rdbNRn2vEnxWTbhI">
+            <button class="btn btn-primary">Save Update</button>
+        </form>
+    </div>
+
+<%- include("partials/footer") -%>

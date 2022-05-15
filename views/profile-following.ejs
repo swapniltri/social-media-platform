@@ -1,0 +1,61 @@
+<%- include("partials/header") -%>
+
+    <body>
+        <header class="header-bar mb-3">
+            <div class="container d-flex flex-column flex-md-row align-items-center p-3">
+                <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">OurApp</a></h4>
+
+                <div class="flex-row my-3 my-md-0">
+                    <span class="text-white mr-2 header-chat-icon" id="chat-icon" title="Chat" data-toggle="tooltip"
+                    data-placement="bottom"><i class="fas fa-comment"></i></span>
+                    <form action="/search" method="POST" class="d-inline">
+                        <input name="username" class=" input-dark bg-dark text-white" type="text" title="Enter Username" data-toggle="tooltip"
+                        data-placement="bottom" placeholder="Search" autocomplete="off" required>
+                        <button class="btn btn-sm btn-secondary mr-2" title="Serach Profile" data-toggle="tooltip"
+                        data-placement="bottom"><i class="fas fa-search"></i></button>
+                    </form>
+                
+                <a class="btn btn-sm btn-success mr-2" href="/create-post">Create Post</a>
+                <form action="/logout" method="POST" class="d-inline">
+                    <input type="hidden" name="_csrf" value="vyFiGYiz-ngtvfbmQHkv61Y6lgPvKPZa5yy0">
+                    <button class="btn btn-sm btn-secondary">Sign Out</button>
+                </form>
+                <a href="/profile/<%=User%>" class="ml-2"><img title="My Profile" data-toggle="tooltip"
+                    data-placement="bottom" style="width: 32px; height: 32px; border-radius: 16px;"
+                    src="https://gravatar.com/avatar/12416fb9b12fc4962ba8f41fc5cb8cea?s=128"></a>
+                </div>
+
+            </div>
+        </header>
+
+        
+
+        <div class="container py-md-5 container--narrow">
+
+
+
+
+
+            <h2><img class="avatar-small" src="https://gravatar.com/avatar/a1acca12a64ae4f74d46b1e43ae41008?s=128">
+                <%=username%>
+
+            </h2>
+
+            <div class="profile-nav nav nav-tabs pt-2 mb-4">
+                <a href="/profile/<%=username%>" class="profile-nav-link nav-item nav-link ">Posts: <%=noOfPosts%></a>
+                <a href="/profile/<%=username%>/followers" class="profile-nav-link nav-item nav-link  ">Followers: <%=noOfFollowers%></a>
+                <a href="/profile/<%=username%>/following" class="profile-nav-link nav-item nav-link active ">Following: <%=noOfFollowing%></a>
+            </div>
+
+            <div class="list-group">
+                <% for(var i=0 ; i < following.length ; i++ ){ %>
+                    <a href="/profile/<%=following[i].name%>" class="list-group-item list-group-item-action">
+                        <img class="avatar-tiny"
+                            src="https://gravatar.com/avatar/12416fb9b12fc4962ba8f41fc5cb8cea?s=128">
+                        <strong><%=following[i].name%></strong>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include("partials/footer") -%>

@@ -1,0 +1,69 @@
+<%- include("partials/header") -%>
+
+<body>
+    <header class="header-bar mb-3 bg-dark">
+        <div class="container d-flex flex-column flex-md-row align-items-center p-3">
+            <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">OurApp</a></h4>
+
+            <div class="flex-row my-3 my-md-0">
+                
+                    <span class="text-white mr-2 header-chat-icon" id="chat-icon" title="Chat" data-toggle="tooltip"
+                    data-placement="bottom"><i class="fas fa-comment"></i></span>
+                    <form action="/search" method="POST" class="d-inline">
+                        <input name="username" class=" input-dark bg-dark text-white" type="text" title="Enter Username" data-toggle="tooltip"
+                        data-placement="bottom" placeholder="Search" autocomplete="off" required>
+                        <button class="btn btn-sm btn-secondary mr-2" title="Serach Profile" data-toggle="tooltip"
+                        data-placement="bottom"><i class="fas fa-search"></i></button>
+                    </form>
+                
+                <a class="btn btn-sm btn-success mr-2" href="/create-post">Create Post</a>
+                <form action="/logout" method="POST" class="d-inline">
+                    <input type="hidden" name="_csrf" value="vyFiGYiz-ngtvfbmQHkv61Y6lgPvKPZa5yy0">
+                    <button class="btn btn-sm btn-secondary">Sign Out</button>
+                </form>
+                <a href="/profile/<%=User%>" class="ml-2"><img title="My Profile" data-toggle="tooltip"
+                    data-placement="bottom" style="width: 32px; height: 32px; border-radius: 16px;"
+                    src="https://gravatar.com/avatar/12416fb9b12fc4962ba8f41fc5cb8cea?s=128"></a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="container py-md-5 container--narrow">
+
+
+
+        <% if(postItem.length === 0){ %>
+
+            <div class="text-center">
+                <h2>Hello <strong><%=username%></strong>, your feed is empty.</h2>
+                <p class="lead text-muted">Your feed displays the latest posts from the people you follow. If you
+                    don&rsquo;t have any friends to follow that&rsquo;s okay; you can use the &ldquo;Search&rdquo; feature
+                    in the top menu bar to find content written by people with similar interests and then follow them.</p>
+            </div>
+
+        <% }else{ %>
+
+            <h2 class="text-center mb-4">The Latest From Those You Follow</h2> 
+            <div class="list-group">
+                <% for(var i=0 ; i < postItem.length ; i++ ){ %>
+
+                    <a href="/post/<%=postItem[i]._id%>" class="list-group-item list-group-item-action">
+                        <img class="avatar-tiny" src="https://gravatar.com/avatar/12416fb9b12fc4962ba8f41fc5cb8cea?s=128">
+                        <strong><%=postItem[i].title%></strong> <span class="text-muted small">by <%=postItem[i].user%> on <%=postItem[i].date%></span>
+                    </a>
+
+                <% } %>
+            </div>
+
+        <% } %>
+
+
+        
+
+
+        
+
+    </div>
+
+<%- include("partials/footer") -%>

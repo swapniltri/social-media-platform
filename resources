@@ -1,0 +1,25 @@
+-> Start by npm init.
+
+-> install all the dependencies.
+
+-> Express : https://medium.com/@ralph1786/how-to-setup-an-express-server-5fd9cd9ae073
+
+-> EJS : https://ncoughlin.com/posts/express-ejs-render-page-dynamic-content/
+
+-> MVC Architecture : https://www.geeksforgeeks.org/model-view-controllermvc-architecture-for-node-applications/
+
+-> mongoose models: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
+
+-> Express routes and controllers: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
+
+-> bcrypt: https://www.npmjs.com/package/bcryptjs (password-encrption)
+
+-> validator: https://www.npmjs.com/package/validator (email-validator)
+
+-> async and await: https://zellwk.com/blog/async-await-express/
+
+-> Express-Session with mongoDB: https://www.youtube.com/watch?v=J1qXK66k1y4 , https://stackoverflow.com/questions/66654037/mongo-connect-error-with-mongo-connectsession , https://expressjs.com/en/resources/middleware/session.html
+
+-> Socket.io: https://socket.io/docs/v4/client-initialization/  https://stackoverflow.com/questions/65456064/post-http-localhost3000-socket-io-eio-3transport-pollingt-nquney3-400-bad
+
+-> Webpack Configuration: https://morioh.com/p/c6e73ed575bb
